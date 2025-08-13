@@ -14,7 +14,12 @@ import { Client, Collection, Events, GatewayIntentBits, MessageFlags, REST, Rout
 
 
 // Create a new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] }) as Client & { commands: Collection<string, any> };
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildVoiceStates // 🎯 Necesario para joinVoiceChannel
+  ]
+}) as Client & { commands: Collection<string, any> };
 
 client.commands = new Collection();
 
